@@ -14,10 +14,12 @@ read -p "Do you want to run the script? (y/n)  " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    STARTTIME=$(date +%s%N);
-    sleep 1;
-    RUNTIME=$((($(date +%s%N) - $STARTTIME)/1000000));
+    STARTTIME=$(date +%s%N)
+    echo "Script started on $(date)"
+    sleep 1
+    echo "Script ended $(date)"
+    RUNTIME=$((($(date +%s%N) - $STARTTIME)/1000000))
     
-    echo "The script took $RUNTIME ms to run.";
+    echo "The script took $RUNTIME ms to run."
     
 fi
