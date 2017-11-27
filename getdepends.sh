@@ -1,12 +1,23 @@
 #!/bin/bash
 
-# Prints currents users
-echo Hello $USER 
+#Solution to assignment https://github.com/hgop/syllabus-2017/blob/master/Assignment/Day1/Assignment.md
+    
+# Prints currents users and hostname
+echo Welcome $USER,
+echo Host:  $HOSTNAME
 #Gets and prints current enviroment. Not tested on other than Ubuntu...
-echo Current distro: $(grep -e "DISTRIB_DESCRIPTION" /etc/*-release | grep -oP '"\K[^"\047]+(?=["\047])')
-read -p "Do you want to use this script to get the required dependecies? y/n " -n 1 -r
+echo System:    $(grep -e "DISTRIB_DESCRIPTION" /etc/*-release | grep -oP '"\K[^"\047]+(?=["\047])')
+echo 
+echo "This script uses  Ubuntu built in package manager apt-get to download and install required dependencies for this project."
+
+read -p "Do you want to run the script? (y/n)  " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    date
+    STARTTIME=$(date +%s%N);
+    sleep 1;
+    RUNTIME=$((($(date +%s%N) - $STARTTIME)/1000000));
+    
+    echo "The script took $RUNTIME ms to run.";
+    
 fi
