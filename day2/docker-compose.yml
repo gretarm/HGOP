@@ -1,7 +1,7 @@
 version: "2"
 services:
   my_page_counter_app:
-    image: gretarm/week1:day2
+    image: gretarm/week1:part2
     ports:
      - "3000:3000"
     links:
