@@ -1,5 +1,6 @@
 INSTANCE_DIR="ec2_instance"
 SECURITY_GROUP_NAME="ssh-http"
+
 if [ -d "${INSTANCE_DIR}" ]; then
     exit
 fi
@@ -20,3 +21,4 @@ echo ${INSTANCE_ID} > ./ec2_instance/instance-id.txt
 aws ec2 wait --region eu-west-1 instance-running --instance-ids ${INSTANCE_ID}
 export INSTANCE_PUBLIC_NAME=$(aws ec2 describe-instances --instance-ids ${INSTANCE_ID} --query "Reservations[*].Instances[*].PublicDnsName" --output=text)
 echo ${INSTANCE_PUBLIC_NAME} > ./ec2_instance/instance-public-name.txt
+echo ${SECURITY_GROUP_NAME} > ./ec2_instance/security-group-name.txt
